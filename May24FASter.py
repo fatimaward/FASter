@@ -102,9 +102,11 @@ llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0125")
 
 embeddings = OpenAIEmbeddings()
 
-vectorstore = FAISS.load_local(r'C:\Users\user\Desktop\FASter\FAStervs\FAStervsMay24E', embeddings, allow_dangerous_deserialization=True)
+wd = os.getcwd()
 
-sp_data = pd.read_csv(r'C:\Users\user\Desktop\FASter\May2Query.csv', encoding='cp1252')
+vectorstore = FAISS.load_local('FAStervsMay24E', embeddings, allow_dangerous_deserialization=True)
+
+sp_data = pd.read_csv('May2Query.csv', encoding='cp1252')
 
 sp_data = sp_data.rename(columns={'Name': 'Policy Name'})
 
