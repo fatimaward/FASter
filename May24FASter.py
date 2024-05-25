@@ -229,9 +229,9 @@ def get_the_answer(question):
 
 flask_app = Flask(__name__)
 CORS(flask_app, supports_credentials=True, origins='http://localhost:8000')
-# @flask_app.route('/')
-# def index():
-#     return 'Check'
+@flask_app.route('/')
+def index():
+    return 'Check'
 @flask_app.route('/api/generate-response-faster', methods=['POST'])
 def generate_response():
     data = request.json
@@ -239,4 +239,4 @@ def generate_response():
     main_answer = get_the_answer(question)
     return jsonify({'response': main_answer})
 if __name__ == '__main__':
-    flask_app.run(debug=True, host='0.0.0.0', port=8000)
+    flask_app.run(debug=True)
